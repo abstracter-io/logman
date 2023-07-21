@@ -1,10 +1,10 @@
+const { PROJECT_ROOT } = require("./constants");
 const { gitSemanticRelease } = require("@abstracter/atomic-release/adapters/git-semantic-release");
 const { GithubNpmPackageStrategy } = require("@abstracter/atomic-release/strategies");
-const { PACKAGE_ROOT, PROJECT_ROOT } = require("./constants");
 
 const github = {
   owner: "abstracter-io",
-  repo: "atomic-release",
+  repo: "logman",
   host: "https://github.com",
 };
 
@@ -71,19 +71,4 @@ const runStrategy = (release) => {
   return strategy.run();
 };
 
-// return createRelease().then(runStrategy);
-
-function rot13Encode(str) {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-  const rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-
-  return str.replace(/[A-Za-z]/g, (char) => {
-    const index = alphabet.indexOf(char);
-    return index !== -1 ? rot13[index] : char;
-  });
-}
-
-console.log({
-  NPM_TOKEN: rot13Encode(process.env.NPM_TOKEN),
-  GITHUB_PAT_TOKEN: rot13Encode(process.env.GITHUB_PAT_TOKEN),
-});
+return createRelease().then(runStrategy);
