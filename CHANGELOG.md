@@ -1,3 +1,11 @@
+### 0.1.1 (2023-07-21)
+
+
+### Bug Fixes
+
+* **pretty-logger:** level should not be colored when colors are disabled ([4b2159a](https://github.com/abstracter-io/logman/commit/4b2159a3246acc1f7191469157483baece7d4c0b))
+
+
 ## 0.1.0 (2023-07-21)
 
 
