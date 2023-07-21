@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "node16",
+    "rootDir": "src",
+    "outDir": "dist",
+    "newLine": "LF",
+    "lib": ["es2021"],
+    "types": [
+      "jest", "node"
+    ],
+    "moduleResolution": "node16",
+    "importHelpers": false,
+    "declaration": true,
+    "pretty": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "downlevelIteration": true,
+    "stripInternal": true
+  },
+  "include": [
+    "tests",
+    "src"
+  ]
+}
