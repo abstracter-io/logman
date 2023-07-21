@@ -78,7 +78,7 @@ class PrettyLogger extends BaseLogger<Config> {
       const levelColor = LEVEL_COLOR[level];
 
       if (levelColor) {
-        levelColor(level.toUpperCase());
+        return levelColor(level.toUpperCase());
       }
     }
 
