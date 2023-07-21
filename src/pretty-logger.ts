@@ -13,7 +13,7 @@ type Config = BaseLoggerConfig & {
   disableColors?: boolean;
 };
 
-const LEVEL_COLOR: Record<string, Color> = {
+const LEVEL_COLOR: Record<string, Color | undefined> = {
   fatal: colors.red,
   error: colors.red,
   warn: colors.yellow,
@@ -32,10 +32,6 @@ const DATE_TIME_FORMAT = new Intl.DateTimeFormat("en-US", {
   fractionalSecondDigits: 3,
   hour12: false,
 });
-
-const noopColor = (str: string) => {
-  return str;
-};
 
 const dateParts = (date: Date) => {
   const obj: Record<string, string> = {};
@@ -77,6 +73,18 @@ class PrettyLogger extends BaseLogger<Config> {
     return color(str);
   }
 
+  private formatLevel(level: string): string {
+    if (!this.config.disableColors) {
+      const levelColor = LEVEL_COLOR[level];
+
+      if (levelColor) {
+        levelColor(level.toUpperCase());
+      }
+    }
+
+    return level.toUpperCase();
+  }
+
   private formatError(entry: LogEntry): string | null {
     if (entry instanceof Error && entry.stack) {
       return entry.stack;
@@ -89,7 +97,6 @@ class PrettyLogger extends BaseLogger<Config> {
     const { name, ...props } = properties ?? {};
     const message = entry instanceof Error ? entry.message : entry;
     const datetime = formatDate(new Date());
-    const levelColor = LEVEL_COLOR[level] ?? noopColor;
 
     let line = `${this.color(colors.grey, datetime)}`;
 
@@ -99,7 +106,7 @@ class PrettyLogger extends BaseLogger<Config> {
       line += ` ${this.color(colors.grey, prop)}`;
     }
 
-    line += ` ${levelColor(level.toUpperCase())}`;
+    line += ` ${this.formatLevel(level)}`;
 
     if (typeof name === "string" && name.length) {
       line += ` ${name}`;
