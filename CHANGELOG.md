@@ -1,3 +1,11 @@
+### 0.1.2 (2023-07-21)
+
+
+### Bug Fixes
+
+* **pretty-logger:** add missing return when level is colored 🤦🏻‍♂️ ([9a43ceb](https://github.com/abstracter-io/logman/commit/9a43ceb9e39677a8145f65e11d8164e74db10646))
+
+
 ### 0.1.1 (2023-07-21)
 
 
