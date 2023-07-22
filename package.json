@@ -37,12 +37,11 @@
     "logger",
     "simple"
   ],
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "dependencies": {
     "colors": "^1.4.0",
     "serialize-error": "^11.0.0",
-    "sonic-boom": "^3.3.0",
-    "ts-node": "^10.9.1"
+    "sonic-boom": "^3.3.0"
   },
   "devDependencies": {
     "@abstracter/atomic-release": "^1.2.1-beta.2",
@@ -61,6 +60,7 @@
     "micromatch": "^4.0.5",
     "pino": "^8.14.1",
     "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }
 }
