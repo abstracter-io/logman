@@ -20,7 +20,10 @@ class StreamLogger extends BaseLogger<Config> {
   child(properties?: LogProperties) {
     return new StreamLogger({
       ...this.config,
-      properties,
+      properties: {
+        ...this.config.properties,
+        ...properties,
+      },
     });
   }
 }

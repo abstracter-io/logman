@@ -131,7 +131,10 @@ class PrettyLogger extends BaseLogger<Config> {
     return new PrettyLogger({
       ...this.config,
       delegate: this.delegate,
-      properties,
+      properties: {
+        ...this.config.properties,
+        ...properties,
+      },
     });
   }
 }

@@ -36,7 +36,10 @@ class JsonLogger extends BaseLogger<Config> {
     return new JsonLogger({
       ...this.config,
       delegate: this.delegate,
-      properties,
+      properties: {
+        ...this.config.properties,
+        ...properties,
+      },
     });
   }
 }

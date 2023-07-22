@@ -77,7 +77,10 @@ class WorkerThreadLogger extends BaseLogger<Config> {
   child(properties?: LogProperties) {
     return new WorkerThreadLogger({
       ...this.config,
-      properties,
+      properties: {
+        ...this.config.properties,
+        ...properties,
+      },
     });
   }
 

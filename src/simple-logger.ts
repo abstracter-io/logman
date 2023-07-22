@@ -47,7 +47,10 @@ class SimpleLogger extends BaseLogger<Config> {
   child(properties?: LogProperties) {
     return new SimpleLogger({
       ...this.config,
-      properties,
+      properties: {
+        ...this.config.properties,
+        ...properties,
+      },
     });
   }
 }
