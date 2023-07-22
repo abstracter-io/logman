@@ -1,3 +1,11 @@
+### 0.1.4 (2023-07-22)
+
+
+### Bug Fixes
+
+* child method should preserve properties (unless overriden) ([8917ad5](https://github.com/abstracter-io/logman/commit/8917ad560f7f0a2a96e1d8b75c0aaa4cbf76cd61))
+
+
 ### 0.1.3 (2023-07-22)
 
 
