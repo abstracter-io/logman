@@ -1,6 +1,7 @@
 import * as os from "os";
 
 import { BaseLogger, BaseLoggerConfig } from "./base-logger";
+import { extendProperties } from "./helpers/extend-properties";
 
 import type { Log, LogEntry, LogProperties } from "./logger";
 
@@ -13,11 +14,10 @@ class SimpleLogger extends BaseLogger<Config> {
     super(config);
   }
 
-  protected doLog(level: string, entry: LogEntry, properties?: LogProperties) {
-    this.config.log(level, entry, {
-      hostname: os.hostname(),
-      ...properties,
-    });
+  doLog(level: string, entry: LogEntry, properties?: LogProperties) {
+    const mergedProperties = extendProperties({ hostname: os.hostname() }, properties);
+
+    this.config.log(level, entry, mergedProperties);
   }
 
   fatal(entry: LogEntry, properties?: LogProperties) {

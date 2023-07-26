@@ -1,3 +1,5 @@
+import { extendProperties } from "./helpers/extend-properties";
+
 import type { LogEntry, Logger, LogProperties } from "./logger";
 
 type LevelOrdinals = { [k: string]: number };
@@ -57,10 +59,7 @@ abstract class BaseLogger<T extends Config = never> implements Logger {
 
   log(level: string, entry: LogEntry, properties?: LogProperties) {
     if (assertLevels(this.levelsOrdinals, this.level, level)) {
-      const mergedProperties = {
-        ...this.config.properties,
-        ...properties,
-      };
+      const mergedProperties = extendProperties({}, this.config.properties, properties);
 
       this.doLog(level, entry, mergedProperties);
     }
