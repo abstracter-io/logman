@@ -39,7 +39,6 @@
   ],
   "license": "GPL-3.0-only",
   "dependencies": {
-    "@abstracter/logman": "^0.1.4",
     "colors": "^1.4.0",
     "serialize-error": "^11.0.0",
     "sonic-boom": "^3.3.0"
