@@ -1,5 +1,4 @@
 import colors from "colors/safe";
-import SonicBoom from "sonic-boom";
 
 import { StreamLogger } from "./stream-logger";
 import { BaseLogger, BaseLoggerConfig } from "./base-logger";
@@ -59,9 +58,8 @@ class PrettyLogger extends BaseLogger<Config> {
 
     this.delegate = config.delegate ?? new StreamLogger({
       level: config.level,
+      stream: process.stdout,
       levelsOrdinals: config.levelsOrdinals,
-      // @ts-expect-error partial stream
-      stream: new SonicBoom({ fd: process.stdout.fd }),
     });
   }
 
@@ -101,7 +99,7 @@ class PrettyLogger extends BaseLogger<Config> {
     let line = `${this.color(colors.grey, datetime)}`;
 
     for (const [key, value] of Object.entries(props)) {
-      const prop = `[${key}: ${typeof value === "string" ? value : "*"}]`;
+      const prop = `[${key}: ${value}]`;
 
       line += ` ${this.color(colors.grey, prop)}`;
     }

@@ -9,6 +9,7 @@ type Config = BaseLoggerConfig & {
   log: Log;
 };
 
+/** @Deprected **/
 class SimpleLogger extends BaseLogger<Config> {
   public constructor(config: Config) {
     super(config);

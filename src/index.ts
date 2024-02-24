@@ -5,4 +5,4 @@ export * from "./noop-logger";
 export * from "./stream-logger";
 export * from "./simple-logger";
 export * from "./pretty-logger";
-export * from "./worker-thread-logger";
+export * from "./default-logger";

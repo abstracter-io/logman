@@ -1,8 +1,7 @@
+import { StreamLogger } from "./stream-logger";
 import { BaseLogger, BaseLoggerConfig } from "./base-logger";
 
 import type { LogEntry, Logger, LogProperties } from "./logger";
-import { StreamLogger } from "./stream-logger";
-import SonicBoom from "sonic-boom";
 
 type Config = BaseLoggerConfig & {
   delegate?: Logger;
@@ -16,9 +15,8 @@ class JsonLogger extends BaseLogger<Config> {
 
     this.delegate = config.delegate ?? new StreamLogger({
       level: config.level,
+      stream: process.stdout,
       levelsOrdinals: config.levelsOrdinals,
-      // @ts-expect-error partial stream
-      stream: new SonicBoom({ fd: process.stdout.fd }),
     });
   }
 

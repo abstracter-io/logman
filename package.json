@@ -39,9 +39,7 @@
   ],
   "license": "GPL-3.0-only",
   "dependencies": {
-    "colors": "^1.4.0",
-    "serialize-error": "^11.0.0",
-    "sonic-boom": "^3.3.0"
+    "colors": "^1.4.0"
   },
   "devDependencies": {
     "@abstracter/atomic-release": "^1.2.1-beta.2",

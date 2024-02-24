@@ -17,18 +17,11 @@ type Config = {
   levelsOrdinals?: LevelOrdinals;
 };
 
-const DEFAULT_ORDINALS = {
-  trace: 0,
-  debug: 1,
-  info: 2,
-  warn: 3,
-  error: 4,
-  fatal: 5,
-};
+const DEFAULT_ORDINALS = {};
 
 const assertLevels = (ordinals: LevelOrdinals, loggerLevel: string, entryLevel: string) => {
-  const min = ordinals[loggerLevel];
-  const value = ordinals[entryLevel];
+  const min = ordinals[loggerLevel] ?? 0;
+  const value = ordinals[entryLevel] ?? 0;
 
   if (min === undefined || value === undefined) {
     return true;
@@ -38,9 +31,8 @@ const assertLevels = (ordinals: LevelOrdinals, loggerLevel: string, entryLevel: 
 };
 
 abstract class BaseLogger<T extends Config = never> implements Logger {
-  private readonly level: string;
-  private readonly levelsOrdinals: LevelOrdinals;
-
+  protected readonly level: string;
+  protected readonly levelsOrdinals: LevelOrdinals;
   protected readonly config: T;
 
   protected constructor(config: T = {} as T) {

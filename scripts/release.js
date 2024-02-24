@@ -1,6 +1,7 @@
-const { PROJECT_ROOT } = require("./constants");
 const { gitSemanticRelease } = require("@abstracter/atomic-release/adapters/git-semantic-release");
 const { GithubNpmPackageStrategy } = require("@abstracter/atomic-release/strategies");
+
+const { PROJECT_ROOT } = require("./constants");
 
 const github = {
   owner: "abstracter-io",

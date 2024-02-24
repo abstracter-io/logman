@@ -7,7 +7,6 @@ type Config = BaseLoggerConfig & {
 
 // This logger writes an entry to the provided stream
 // and assumes that the entry is a string
-// Backpressure should be handled by the provided stream (??)
 class StreamLogger extends BaseLogger<Config> {
   public constructor(config: Config) {
     super(config);
